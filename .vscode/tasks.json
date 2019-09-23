@@ -7,7 +7,7 @@
             "command": "g++",
             "args": [
                 "-g",
-                "helloworld.cpp"
+                "main.cpp"
             ],
             "group": {
                 "kind": "build",
