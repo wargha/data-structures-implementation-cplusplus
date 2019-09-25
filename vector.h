@@ -1,13 +1,20 @@
+#ifndef vector_h
+#define vector_h
+#ifdef UNIT_TESTING
+int main(int argc, const char* argv[]);
+#endif
 namespace custom
 {
 template <class T>
 class vector
 {
-public:
+    #ifdef UNIT_TESTING
+    friend int ::main(int argc, const char *argv[]);
+    #endif
+private:
     T *buffer;
     int numElements;
     int numCapacity;
-
     //private resize
     void resize(int numCapacity);
 
@@ -34,8 +41,10 @@ public:
     //mutators
 
     void push_back(T t);
-    void access(int index);
+    T access(int index);
     // iterator begin();
     // iterator end();
+     
 };
-} // namespace custom
+ #include "vector.cpp"
+ #endif

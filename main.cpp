@@ -34,7 +34,7 @@
 int asserts_existing = 127;
 
 #include <cstring>
-#include "vector.cpp"
+#include "vector.h"
 #include "unit_testing.h"
 
 using std::string;
@@ -78,124 +78,124 @@ int main(int argc, const char *argv[])
     /*
      * Testing sized and filled vector constructor
      */
-    // startTestSet("Sized Constructor with Default Value");
-    // try
-    // {
-    //     vector<int> zeroSizedFilledVector(0, 15);
-    //     assertTrue(false, __LINE__);
-    // }
-    // catch (const char *exceptionMessage)
-    // {
-    //     assertTrue(strcmp(exceptionMessage, "Error: vector sizes must be greater than 0.") == 0, __LINE__);
-    // }
-    // vector<int> filledVector(4, 0);
-    // assertTrue(filledVector.buffer != NULL, __LINE__);
-    // assertTrue(filledVector.numElements == 4, __LINE__);
-    // assertTrue(filledVector.numCapacity == 4, __LINE__);
-    // assertTrue(filledVector.buffer[0] == 0, __LINE__);
-    // assertTrue(filledVector.buffer[1] == 0, __LINE__);
-    // assertTrue(filledVector.buffer[2] == 0, __LINE__);
-    // assertTrue(filledVector.buffer[3] == 0, __LINE__);
+    startTestSet("Sized Constructor with Default Value");
+    try
+    {
+        vector<int> zeroSizedFilledVector(0, 15);
+        assertTrue(false, __LINE__);
+    }
+    catch (const char *exceptionMessage)
+    {
+        assertTrue(strcmp(exceptionMessage, "Error: vector sizes must be greater than 0.") == 0, __LINE__);
+    }
+    vector<int> filledVector(4, 0);
+    assertTrue(filledVector.buffer != NULL, __LINE__);
+    assertTrue(filledVector.numElements == 4, __LINE__);
+    assertTrue(filledVector.numCapacity == 4, __LINE__);
+    assertTrue(filledVector.buffer[0] == 0, __LINE__);
+    assertTrue(filledVector.buffer[1] == 0, __LINE__);
+    assertTrue(filledVector.buffer[2] == 0, __LINE__);
+    assertTrue(filledVector.buffer[3] == 0, __LINE__);
 
-    // /*
-    //  * Testing Size
-    //  */
-    // startTestSet("Size");
-    // vector<int> sizeTestVector;
+    /*
+     * Testing Size
+     */
+    startTestSet("Size");
+    vector<int> sizeTestVector;
 
-    // sizeTestVector.numCapacity = 8;
-    // sizeTestVector.numElements = 4;
-    // assertTrue(sizeTestVector.size() == 4, __LINE__);
+    sizeTestVector.numCapacity = 8;
+    sizeTestVector.numElements = 4;
+    assertTrue(sizeTestVector.size() == 4, __LINE__);
 
-    // /*
-    //  * Testing Capacity
-    //  */
-    // startTestSet("Capacity");
-    // assertTrue(sizeTestVector.capacity() == 8, __LINE__);
-    // sizeTestVector.numCapacity = 0;
-    // assertTrue(sizeTestVector.capacity() == 0, __LINE__);
+    /*
+     * Testing Capacity
+     */
+    startTestSet("Capacity");
+    assertTrue(sizeTestVector.capacity() == 8, __LINE__);
+    sizeTestVector.numCapacity = 0;
+    assertTrue(sizeTestVector.capacity() == 0, __LINE__);
 
-    // /*
-    //  * Resetting for further use
-    //  */
-    // sizeTestVector.numCapacity = 8;
-    // sizeTestVector.numElements = 0;
-    // sizeTestVector.buffer = new int[sizeTestVector.numCapacity];
-    // for (int i = 0; i < sizeTestVector.numCapacity; i++)
-    // {
-    //     sizeTestVector.buffer[i] = i * i + 1;
-    // }
-    // /*
-    //  * Testing Clear
-    //  */
-    // startTestSet("Clear");
-    // sizeTestVector.clear();
-    // assertTrue(sizeTestVector.numCapacity == 8, __LINE__);
-    // assertTrue(sizeTestVector.numElements == 0, __LINE__);
-    // assertTrue(sizeTestVector.buffer != NULL, __LINE__);
+    /*
+     * Resetting for further use
+     */
+    sizeTestVector.numCapacity = 8;
+    sizeTestVector.numElements = 0;
+    sizeTestVector.buffer = new int[sizeTestVector.numCapacity];
+    for (int i = 0; i < sizeTestVector.numCapacity; i++)
+    {
+        sizeTestVector.buffer[i] = i * i + 1;
+    }
+    /*
+     * Testing Clear
+     */
+    startTestSet("Clear");
+    sizeTestVector.clear();
+    assertTrue(sizeTestVector.numCapacity == 8, __LINE__);
+    assertTrue(sizeTestVector.numElements == 0, __LINE__);
+    assertTrue(sizeTestVector.buffer != NULL, __LINE__);
 
-    // /*
-    //  * Testing Empty
-    //  */
-    // startTestSet("Empty");
-    // sizeTestVector.numElements = 3;
-    // assertTrue(!sizeTestVector.empty(), __LINE__);
+    /*
+     * Testing Empty
+     */
+    startTestSet("Empty");
+    sizeTestVector.numElements = 3;
+    assertTrue(!sizeTestVector.empty(), __LINE__);
 
-    // sizeTestVector.numElements = 0;
+    sizeTestVector.numElements = 0;
 
-    // assertTrue(sizeTestVector.empty(), __LINE__);
+    assertTrue(sizeTestVector.empty(), __LINE__);
 
-    // /*
-    //  * Testing resize
-    //  */
-    // startTestSet("Negative Resize");
-    // vector<int> emptyResizeVector;
-    // emptyResizeVector.resize(-1);
-    // assertTrue(emptyResizeVector.numCapacity == 0, __LINE__);
-    // assertTrue(emptyResizeVector.numElements == 0, __LINE__);
-    // assertTrue(emptyResizeVector.buffer == NULL, __LINE__);
+    /*
+     * Testing resize
+     */
+    startTestSet("Negative Resize");
+    vector<int> emptyResizeVector;
+    emptyResizeVector.resize(-1);
+    assertTrue(emptyResizeVector.numCapacity == 0, __LINE__);
+    assertTrue(emptyResizeVector.numElements == 0, __LINE__);
+    assertTrue(emptyResizeVector.buffer == NULL, __LINE__);
 
-    // startTestSet("Default Vector Resize");
-    // emptyResizeVector.resize(7);
-    // assertTrue(emptyResizeVector.numCapacity == 7, __LINE__);
-    // assertTrue(emptyResizeVector.numElements == 0, __LINE__);
-    // assertTrue(emptyResizeVector.buffer != NULL, __LINE__);
+    startTestSet("Default Vector Resize");
+    emptyResizeVector.resize(7);
+    assertTrue(emptyResizeVector.numCapacity == 7, __LINE__);
+    assertTrue(emptyResizeVector.numElements == 0, __LINE__);
+    assertTrue(emptyResizeVector.buffer != NULL, __LINE__);
 
-    // startTestSet("Resize");
-    // vector<int> resizeVector;
-    // resizeVector.buffer = new int[5];
-    // resizeVector.numCapacity = 5;
-    // resizeVector.numElements = 5;
-    // resizeVector.buffer[0] = 7;
-    // resizeVector.buffer[1] = 12;
-    // resizeVector.buffer[2] = 10;
-    // resizeVector.buffer[3] = 9;
-    // resizeVector.buffer[4] = 8;
+    startTestSet("Resize");
+    vector<int> resizeVector;
+    resizeVector.buffer = new int[5];
+    resizeVector.numCapacity = 5;
+    resizeVector.numElements = 5;
+    resizeVector.buffer[0] = 7;
+    resizeVector.buffer[1] = 12;
+    resizeVector.buffer[2] = 10;
+    resizeVector.buffer[3] = 9;
+    resizeVector.buffer[4] = 8;
 
-    // int *theBuffer = resizeVector.buffer;
-    // resizeVector.resize(10);
-    // assertTrue(theBuffer != resizeVector.buffer, __LINE__);
-    // assertTrue(resizeVector.numCapacity == 10, __LINE__);
-    // assertTrue(resizeVector.numElements == 5, __LINE__);
-    // assertTrue(resizeVector.buffer[0] == 7, __LINE__);
-    // assertTrue(resizeVector.buffer[1] == 12, __LINE__);
-    // assertTrue(resizeVector.buffer[2] == 10, __LINE__);
-    // assertTrue(resizeVector.buffer[3] == 9, __LINE__);
-    // assertTrue(resizeVector.buffer[4] == 8, __LINE__);
+    int *theBuffer = resizeVector.buffer;
+    resizeVector.resize(10);
+    assertTrue(theBuffer != resizeVector.buffer, __LINE__);
+    assertTrue(resizeVector.numCapacity == 10, __LINE__);
+    assertTrue(resizeVector.numElements == 5, __LINE__);
+    assertTrue(resizeVector.buffer[0] == 7, __LINE__);
+    assertTrue(resizeVector.buffer[1] == 12, __LINE__);
+    assertTrue(resizeVector.buffer[2] == 10, __LINE__);
+    assertTrue(resizeVector.buffer[3] == 9, __LINE__);
+    assertTrue(resizeVector.buffer[4] == 8, __LINE__);
 
-    // theBuffer = resizeVector.buffer;
-    // resizeVector.resize(2);
-    // assertTrue(theBuffer != resizeVector.buffer, __LINE__);
-    // assertTrue(resizeVector.numCapacity == 2, __LINE__);
-    // assertTrue(resizeVector.numElements == 2, __LINE__);
-    // assertTrue(resizeVector.buffer[0] == 7, __LINE__);
-    // assertTrue(resizeVector.buffer[1] == 12, __LINE__);
+    theBuffer = resizeVector.buffer;
+    resizeVector.resize(2);
+    assertTrue(theBuffer != resizeVector.buffer, __LINE__);
+    assertTrue(resizeVector.numCapacity == 2, __LINE__);
+    assertTrue(resizeVector.numElements == 2, __LINE__);
+    assertTrue(resizeVector.buffer[0] == 7, __LINE__);
+    assertTrue(resizeVector.buffer[1] == 12, __LINE__);
 
-    // theBuffer = resizeVector.buffer;
-    // resizeVector.resize(0);
-    // assertTrue(resizeVector.numCapacity == 0, __LINE__);
-    // assertTrue(resizeVector.numElements == 0, __LINE__);
-    // assertTrue(resizeVector.buffer == NULL, __LINE__);
+    theBuffer = resizeVector.buffer;
+    resizeVector.resize(0);
+    assertTrue(resizeVector.numCapacity == 0, __LINE__);
+    assertTrue(resizeVector.numElements == 0, __LINE__);
+    assertTrue(resizeVector.buffer == NULL, __LINE__);
 
     // /*
     //  * Testing push_back with no resizing

@@ -1,22 +1,40 @@
 
 #include "vector.h"
-#include <iostream>
-namespace custom
-{
+
 template <class T>
 vector<T>::vector()
 {
-    numCapacity = 0;
-    numElements = 0;
-    buffer = 0;
+    this->numCapacity = 0;
+    this->numElements = 0;
+    this->buffer = 0;
 }
 template <class T>
 vector<T>::vector(int numElements)
 {
+    if (numElements <= 0)
+        throw "Error: vector sizes must be greater than 0.";
+
+    this->numElements = numElements;
+    this->numCapacity = numElements;
+    this->buffer = new T[numElements];
+    for (int i = 0; i < numElements; i++)
+    {
+        this->buffer[i] = T();
+    }
 }
 template <class T>
 vector<T>::vector(int numElements, T t)
 {
+    if (numElements <= 0)
+        throw "Error: vector sizes must be greater than 0.";
+
+    this->numElements = numElements;
+    this->numCapacity = numElements;
+    this->buffer = new T[numElements];
+    for (int i = 0; i < numElements; i++)
+    {
+        this->buffer[i] = t;
+    }
 }
 
 template <class T>
@@ -31,20 +49,23 @@ vector<T> vector<T>::assign(vector rhs)
 template <class T>
 int vector<T>::size()
 {
-    return 1;
+    return this->numElements;
 }
 template <class T>
 int vector<T>::capacity()
 {
-    return 1;
+    return this->numCapacity;
 }
 template <class T>
 bool vector<T>::empty()
 {
-    return false;
+    return (numElements == 0);
 }
 template <class T>
-void vector<T>::clear() { return; }
+void vector<T>::clear()
+{
+    this->numElements = 0;
+}
 
 template <class T>
 void vector<T>::push_back(T t)
@@ -52,7 +73,7 @@ void vector<T>::push_back(T t)
     return;
 }
 template <class T>
-void vector<T>::access(int index)
+T vector<T>::access(int index)
 {
     return;
 }
@@ -60,8 +81,16 @@ void vector<T>::access(int index)
 template <class T>
 void vector<T>::resize(int numCapacity)
 {
-    return;
+    if (numCapacity < 0)
+    {
+        this->numCapacity = 0;
+    }
+    else
+    {
+        this->numCapacity = numCapacity;
+        
+    }
 }
 // iterator vector::begin(){return;}
 // iterator vector::end(){return;}
-} // namespace custom
+} 
