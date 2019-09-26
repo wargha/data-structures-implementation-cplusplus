@@ -87,10 +87,28 @@ void vector<T>::resize(int numCapacity)
     }
     else
     {
+        T *newBuffer = new T[numCapacity];
+        if (this->numCapacity > numCapacity)
+        {
+            for (int i = 0; i < this->numCapacity; i++)
+            {
+                newBuffer[i] = buffer[i];
+            }
+        }
+        else
+        {
+            for (int i = 0; i < numElements; i++)
+            {
+                newBuffer[i] = buffer[i];
+            }
+        }
+
+        delete[] this->buffer;
+        this->buffer = newBuffer;
         this->numCapacity = numCapacity;
-        
+        //    this->numElements = numCapacity;
     }
 }
 // iterator vector::begin(){return;}
 // iterator vector::end(){return;}
-} 
+}

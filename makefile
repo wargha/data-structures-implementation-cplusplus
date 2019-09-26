@@ -14,7 +14,7 @@
   all: $(TARGET)
 
   $(TARGET): $(TARGET).cpp
-	$(CC) $(CFLAGS)  $(INCLUDES) -o run.exe $(TARGET).cpp vector.h
+	$(CC) $(CFLAGS)  $(INCLUDES) -o run.exe $(TARGET).cpp
   clean:
 	$(RM) -rf *.o *.out *.dSYM
 #

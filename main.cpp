@@ -197,22 +197,22 @@ int main(int argc, const char *argv[])
     assertTrue(resizeVector.numElements == 0, __LINE__);
     assertTrue(resizeVector.buffer == NULL, __LINE__);
 
-    // /*
-    //  * Testing push_back with no resizing
-    //  */
-    // startTestSet("Push Back First Element");
-    // vector<int> pushBackVector(5);
-    // int *tempBuffer = pushBackVector.buffer;
-    // pushBackVector.push_back(1);
-    // assertTrue(tempBuffer != pushBackVector.buffer, __LINE__);
-    // assertTrue(pushBackVector.numCapacity == 10, __LINE__);
-    // assertTrue(pushBackVector.numElements == 6, __LINE__);
-    // assertTrue(pushBackVector.buffer[0] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[1] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[2] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[3] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[4] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[5] == 1, __LINE__);
+    /*
+     * Testing push_back with no resizing
+     */
+    startTestSet("Push Back First Element");
+    vector<int> pushBackVector(5);
+    int *tempBuffer = pushBackVector.buffer;
+    pushBackVector.push_back(1);
+    assertTrue(tempBuffer != pushBackVector.buffer, __LINE__);
+    assertTrue(pushBackVector.numCapacity == 10, __LINE__);
+    assertTrue(pushBackVector.numElements == 6, __LINE__);
+    assertTrue(pushBackVector.buffer[0] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[1] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[2] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[3] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[4] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[5] == 1, __LINE__);
 
     // startTestSet("Push Back Second Element");
     // pushBackVector.push_back(3);
