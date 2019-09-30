@@ -1,12 +1,14 @@
 
 #include "vector.h"
+#include <cstring>
 
+using std::string;
 template <class T>
 vector<T>::vector()
 {
     this->numCapacity = 0;
     this->numElements = 0;
-    this->buffer = 0;
+    this->buffer = NULL;
 }
 template <class T>
 vector<T>::vector(int numElements)
@@ -22,6 +24,13 @@ vector<T>::vector(int numElements)
         this->buffer[i] = T();
     }
 }
+
+template <class T>
+vector<T>::vector(const vector<T> &v)
+{
+    *this = v;
+}
+
 template <class T>
 vector<T>::vector(int numElements, T t)
 {
@@ -70,7 +79,9 @@ void vector<T>::clear()
 template <class T>
 void vector<T>::push_back(T t)
 {
-    return;
+    if (numElements == numCapacity)
+    resize(numCapacity == 0 ? 1 : numCapacity * 2);
+    buffer[numElements++] = t;
 }
 template <class T>
 T vector<T>::access(int index)
@@ -83,32 +94,59 @@ void vector<T>::resize(int numCapacity)
 {
     if (numCapacity < 0)
     {
-        this->numCapacity = 0;
+        this->clear();
+    }
+
+    else if (numCapacity == 0)
+    {
+        this->buffer = 0;
+        this->clear();
+        this->numCapacity = numCapacity;
     }
     else
     {
         T *newBuffer = new T[numCapacity];
-        if (this->numCapacity > numCapacity)
+        for (int i = 0; i < this->numElements && i < numCapacity; i++)
         {
-            for (int i = 0; i < this->numCapacity; i++)
-            {
-                newBuffer[i] = buffer[i];
-            }
+            newBuffer[i] = buffer[i];
         }
-        else
+        if (this->numElements > numCapacity)
         {
-            for (int i = 0; i < numElements; i++)
-            {
-                newBuffer[i] = buffer[i];
-            }
+            this->numElements = numCapacity;
         }
-
+        this->numCapacity = numCapacity;
         delete[] this->buffer;
         this->buffer = newBuffer;
-        this->numCapacity = numCapacity;
-        //    this->numElements = numCapacity;
     }
 }
-// iterator vector::begin(){return;}
+
+template<class T>
+T & vector<T>::operator[](int index) { 
+    if (index >= 0 && index < numElements)
+    return buffer[index];
+    throw "Error: indices must be greater than zero and less than size().";
+}
+template<class T>
+vector<T> & vector<T>::operator=(const vector<T> & v) { 
+    delete[] buffer;
+    if (v.numCapacity > v.numElements) { 
+        numCapacity = v.numElements;
+    } else {  numCapacity = v.numCapacity;}
+    numElements = v.numElements;
+    buffer = new T[numElements];
+    for (int i = 0; i < numElements; i++) { 
+        buffer[i] = v.buffer[i];
+    }
+    return *this;
+}
+template<class T>
+vector<T>::iterator::iterator(){
+    this->ptr = NULL;
+}
+
+template<class T>
+vector<T>::iterator::iterator(T * p){
+   this->ptr = p;
+}
 // iterator vector::end(){return;}
 }

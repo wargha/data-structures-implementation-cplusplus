@@ -214,151 +214,154 @@ int main(int argc, const char *argv[])
     assertTrue(pushBackVector.buffer[4] == 0, __LINE__);
     assertTrue(pushBackVector.buffer[5] == 1, __LINE__);
 
-    // startTestSet("Push Back Second Element");
-    // pushBackVector.push_back(3);
-    // assertTrue(pushBackVector.numCapacity == 10, __LINE__);
-    // assertTrue(pushBackVector.numElements == 7, __LINE__);
-    // assertTrue(pushBackVector.buffer[0] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[1] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[2] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[3] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[4] == 0, __LINE__);
-    // assertTrue(pushBackVector.buffer[5] == 1, __LINE__);
-    // assertTrue(pushBackVector.buffer[6] == 3, __LINE__);
+    startTestSet("Push Back Second Element");
+    pushBackVector.push_back(3);
+    assertTrue(pushBackVector.numCapacity == 10, __LINE__);
+    assertTrue(pushBackVector.numElements == 7, __LINE__);
+    assertTrue(pushBackVector.buffer[0] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[1] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[2] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[3] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[4] == 0, __LINE__);
+    assertTrue(pushBackVector.buffer[5] == 1, __LINE__);
+    assertTrue(pushBackVector.buffer[6] == 3, __LINE__);
 
-    // /*
-    //  * Testing Accessor
-    //  */
-    // startTestSet("[] Accessor Operator");
-    // vector<int> beginEndVector;
-    // beginEndVector.buffer = new int[6];
-    // beginEndVector.buffer[0] = -500;
-    // beginEndVector.buffer[1] = 0;
-    // beginEndVector.buffer[2] = 7;
-    // beginEndVector.buffer[3] = 13;
-    // beginEndVector.buffer[4] = 23;
-    // beginEndVector.numCapacity = 6;
-    // beginEndVector.numElements = 5;
-    // assertTrue(beginEndVector[0] == -500, __LINE__);
+    /*
+     * Testing Accessor
+     */
+    startTestSet("[] Accessor Operator");
+    vector<int> beginEndVector;
+    beginEndVector.buffer = new int[6];
+    beginEndVector.buffer[0] = -500;
+    beginEndVector.buffer[1] = 0;
+    beginEndVector.buffer[2] = 7;
+    beginEndVector.buffer[3] = 13;
+    beginEndVector.buffer[4] = 23;
+    beginEndVector.numCapacity = 6;
+    beginEndVector.numElements = 5;
+    assertTrue(beginEndVector[0] == -500, __LINE__);
 
-    // try
-    // {
-    //     beginEndVector[-1];
-    //     assertTrue(false, __LINE__);
-    // }
-    // catch (const char *message)
-    // {
-    //     assertTrue(strcmp(message, "Error: indices must be greater than zero and less than size().") == 0, __LINE__);
-    // }
+    try
+    {
+        beginEndVector[-1];
+        assertTrue(false, __LINE__);
+    }
+    catch (const char *message)
+    {
+        assertTrue(strcmp(message, "Error: indices must be greater than zero and less than size().") == 0, __LINE__);
+    }
 
-    // try
-    // {
-    //     beginEndVector[6];
-    //     assertTrue(false, __LINE__);
-    // }
-    // catch (const char *message)
-    // {
-    //     assertTrue(strcmp(message, "Error: indices must be greater than zero and less than size().") == 0, __LINE__);
-    // }
+    try
+    {
+        beginEndVector[6];
+        assertTrue(false, __LINE__);
+    }
+    catch (const char *message)
+    {
+        assertTrue(strcmp(message, "Error: indices must be greater than zero and less than size().") == 0, __LINE__);
+    }
 
-    // vector<int> emptyVector;
-    // try
-    // {
-    //     emptyVector[0];
-    //     assertTrue(false, __LINE__);
-    // }
-    // catch (const char *message)
-    // {
-    //     assertTrue(strcmp(message, "Error: indices must be greater than zero and less than size().") == 0, __LINE__);
-    // }
+    vector<int> emptyVector;
+    try
+    {
+        emptyVector[0];
+        assertTrue(false, __LINE__);
+    }
+    catch (const char *message)
+    {
+        assertTrue(strcmp(message, "Error: indices must be greater than zero and less than size().") == 0, __LINE__);
+    }
 
-    // /*
-    //  * Testing Mutator
-    //  */
-    // startTestSet("[] Mutator Operator");
-    // beginEndVector[0] = 35;
-    // assertTrue(beginEndVector.buffer[0] == 35, __LINE__);
+    /*
+     * Testing Mutator
+     */
+    startTestSet("[] Mutator Operator");
+    beginEndVector[0] = 35;
+    assertTrue(beginEndVector.buffer[0] == 35, __LINE__);
 
-    // /*
-    //  * Testing = operator and copy constructor
-    //  */
-    // startTestSet("(full) = Operator");
-    // vector<int> vectorToCopy;
-    // vectorToCopy.numCapacity = 8;
-    // vectorToCopy.numElements = 8;
-    // vectorToCopy.buffer = new int[vectorToCopy.numCapacity];
-    // for (int i = 0; i < vectorToCopy.numCapacity; i++)
-    // {
-    //     vectorToCopy.buffer[i] = i * i + 1;
-    // }
-    // vector<int> vectorAssignedCopy;
-    // vectorAssignedCopy = vectorToCopy;
-    // assertTrue(vectorAssignedCopy.numCapacity == 8, __LINE__);
-    // assertTrue(vectorAssignedCopy.numElements == 8, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer != vectorToCopy.buffer, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[0] == 1, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[1] == 2, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[2] == 5, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[3] == 10, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[4] == 17, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[5] == 26, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[6] == 37, __LINE__);
-    // assertTrue(vectorAssignedCopy.buffer[7] == 50, __LINE__);
+    /*
+     * Testing = operator and copy constructor
+     */
+    startTestSet("(full) = Operator");
+    vector<int> vectorToCopy;
+    vectorToCopy.numCapacity = 8;
+    vectorToCopy.numElements = 8;
+    vectorToCopy.buffer = new int[vectorToCopy.numCapacity];
+    for (int i = 0; i < vectorToCopy.numCapacity; i++)
+    {
+        vectorToCopy.buffer[i] = i * i + 1;
+    }
+    vector<int> vectorAssignedCopy;
+    vectorAssignedCopy = vectorToCopy;
+    assertTrue(vectorAssignedCopy.numCapacity == 8, __LINE__);
+    assertTrue(vectorAssignedCopy.numElements == 8, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer != vectorToCopy.buffer, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[0] == 1, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[1] == 2, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[2] == 5, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[3] == 10, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[4] == 17, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[5] == 26, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[6] == 37, __LINE__);
+    assertTrue(vectorAssignedCopy.buffer[7] == 50, __LINE__);
 
-    // startTestSet("(Full) Copy Constructor");
-    // vector<int> vectorCopy(vectorToCopy);
-    // assertTrue(vectorCopy.numCapacity == 8, __LINE__);
-    // assertTrue(vectorCopy.numElements == 8, __LINE__);
-    // assertTrue(vectorCopy.buffer != vectorToCopy.buffer, __LINE__);
-    // assertTrue(vectorCopy.numCapacity == 8, __LINE__);
-    // assertTrue(vectorCopy.buffer[0] == 1, __LINE__);
-    // assertTrue(vectorCopy.buffer[1] == 2, __LINE__);
-    // assertTrue(vectorCopy.buffer[2] == 5, __LINE__);
-    // assertTrue(vectorCopy.buffer[3] == 10, __LINE__);
-    // assertTrue(vectorCopy.buffer[4] == 17, __LINE__);
-    // assertTrue(vectorCopy.buffer[5] == 26, __LINE__);
-    // assertTrue(vectorCopy.buffer[6] == 37, __LINE__);
-    // assertTrue(vectorCopy.buffer[7] == 50, __LINE__);
+    startTestSet("(Full) Copy Constructor");
+    vector<int> vectorCopy(vectorToCopy);
+    assertTrue(vectorCopy.numCapacity == 8, __LINE__);
+    assertTrue(vectorCopy.numElements == 8, __LINE__);
+    assertTrue(vectorCopy.buffer != vectorToCopy.buffer, __LINE__);
+    assertTrue(vectorCopy.numCapacity == 8, __LINE__);
+    assertTrue(vectorCopy.buffer[0] == 1, __LINE__);
+    assertTrue(vectorCopy.buffer[1] == 2, __LINE__);
+    assertTrue(vectorCopy.buffer[2] == 5, __LINE__);
+    assertTrue(vectorCopy.buffer[3] == 10, __LINE__);
+    assertTrue(vectorCopy.buffer[4] == 17, __LINE__);
+    assertTrue(vectorCopy.buffer[5] == 26, __LINE__);
+    assertTrue(vectorCopy.buffer[6] == 37, __LINE__);
+    assertTrue(vectorCopy.buffer[7] == 50, __LINE__);
 
-    // /*
-    //  * Resetting to not full vector
-    //  */
-    // startTestSet("(Not full) = Operator");
-    // vectorToCopy.numElements = 3;
+    /*
+     * Resetting to not full vector
+     */
+    startTestSet("(Not full) = Operator");
+    vectorToCopy.numElements = 3;
 
-    // vector<int> notFullVectorAssignedCopy;
-    // notFullVectorAssignedCopy = vectorToCopy;
-    // assertTrue(notFullVectorAssignedCopy.numCapacity == 3, __LINE__);
-    // assertTrue(notFullVectorAssignedCopy.numElements == 3, __LINE__);
-    // assertTrue(notFullVectorAssignedCopy.buffer != vectorToCopy.buffer, __LINE__);
-    // assertTrue(notFullVectorAssignedCopy.buffer[0] == 1, __LINE__);
-    // assertTrue(notFullVectorAssignedCopy.buffer[1] == 2, __LINE__);
-    // assertTrue(notFullVectorAssignedCopy.buffer[2] == 5, __LINE__);
+    vector<int> notFullVectorAssignedCopy;
+    notFullVectorAssignedCopy = vectorToCopy;
+    assertTrue(notFullVectorAssignedCopy.numCapacity == 3, __LINE__);
+    assertTrue(notFullVectorAssignedCopy.numElements == 3, __LINE__);
+    assertTrue(notFullVectorAssignedCopy.buffer != vectorToCopy.buffer, __LINE__);
+    assertTrue(notFullVectorAssignedCopy.buffer[0] == 1, __LINE__);
+    assertTrue(notFullVectorAssignedCopy.buffer[1] == 2, __LINE__);
+    assertTrue(notFullVectorAssignedCopy.buffer[2] == 5, __LINE__);
 
-    // startTestSet("(Not Full) Copy Constructor");
-    // vector<int> notFullVectorCopy(vectorToCopy);
-    // assertTrue(notFullVectorCopy.numCapacity == 3, __LINE__);
-    // assertTrue(notFullVectorCopy.numElements == 3, __LINE__);
-    // assertTrue(notFullVectorCopy.buffer != vectorToCopy.buffer, __LINE__);
-    // assertTrue(notFullVectorCopy.buffer[0] == 1, __LINE__);
-    // assertTrue(notFullVectorCopy.buffer[1] == 2, __LINE__);
-    // assertTrue(notFullVectorCopy.buffer[2] == 5, __LINE__);
+    startTestSet("(Not Full) Copy Constructor");
+    vector<int> notFullVectorCopy(vectorToCopy);
+    std::cout << "HERE";
+    assertTrue(notFullVectorCopy.numCapacity == 3, __LINE__);
+    assertTrue(notFullVectorCopy.numElements == 3, __LINE__);
+    assertTrue(notFullVectorCopy.buffer != vectorToCopy.buffer, __LINE__);
+    assertTrue(notFullVectorCopy.buffer[0] == 1, __LINE__);
+    assertTrue(notFullVectorCopy.buffer[1] == 2, __LINE__);
+    assertTrue(notFullVectorCopy.buffer[2] == 5, __LINE__);
+  std::cout << "HERE";
+    /*
+     * Testing Raw Iterators
+     */
+    startTestSet("Raw Iterator");
+    vector<int>::iterator nullIt = vector<int>::iterator();
+    assertTrue(nullIt.ptr == NULL, __LINE__);
+    std::cout << "HERE";
+     int someInt = 3;
+     int *someIntPtr = &someInt;
+       std::cout << "HERE";
+     vector<int>::iterator intPtr = vector<int>::iterator(&someInt);
+     assertTrue(intPtr.ptr == someIntPtr, __LINE__);
 
-    // /*
-    //  * Testing Raw Iterators
-    //  */
-    // startTestSet("Raw Iterator");
-    // vector<int>::iterator nullIt = vector<int>::iterator();
-    // assertTrue(nullIt.ptr == NULL, __LINE__);
-    // int someInt = 3;
-    // int *someIntPtr = &someInt;
-    // vector<int>::iterator intPtr = vector<int>::iterator(&someInt);
-    // assertTrue(intPtr.ptr == someIntPtr, __LINE__);
-
-    // /*
-    //  * Testing begin and end
-    //  */
-    // startTestSet("Iterator Begin and End");
+    /*
+     * Testing begin and end
+     */
+    startTestSet("Iterator Begin and End");
     // vector<int>::iterator emptyVectorBeginIt = emptyVector.begin();
     // assertTrue(emptyVectorBeginIt.ptr == NULL, __LINE__);
 
