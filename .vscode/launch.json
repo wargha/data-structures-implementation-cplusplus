@@ -6,7 +6,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/a.exe",
+            "program": "${workspaceFolder}/deque/run.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

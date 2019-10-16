@@ -44,31 +44,38 @@ public:
 
     void push_back(T t);
     T access(int index);
-    // iterator begin();
-    // iterator end();
+    class iterator;
+    iterator begin();
+    iterator end();
 
     //accessor
     T &operator[](int index);
     vector<T> &operator=(const vector<T> &);
-
+};
 // template <class T>
-    class iterator
-    {
-    public:
-    
+template <class T>
+class vector<T>::iterator
+{
+public:
 #ifdef UNIT_TESTING
-        friend int ::main(int argc, const char *argv[]);
+    friend int ::main(int argc, const char *argv[]);
 #endif
 
-       iterator();
-        
+    iterator();
+    iterator(T *p);
+    iterator(const iterator &rhs);
+    iterator &operator=(const iterator &rhs);
+    bool operator!=(const iterator &rhs) const;
+    bool operator==(const iterator &rhs) const;
+    T &operator*();
+    iterator &operator++();
+    iterator operator++(int postfix);
+    iterator &operator--();
+    iterator operator--(int postfix);
 
-        iterator(T * p);
-        
-
-    private:
-        T *ptr;
-    };
+private:
+    T *ptr;
 };
+} // namespace custom
 #include "vector.cpp"
 #endif

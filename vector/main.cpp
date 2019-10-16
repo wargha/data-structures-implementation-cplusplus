@@ -337,14 +337,13 @@ int main(int argc, const char *argv[])
 
     startTestSet("(Not Full) Copy Constructor");
     vector<int> notFullVectorCopy(vectorToCopy);
-    std::cout << "HERE";
     assertTrue(notFullVectorCopy.numCapacity == 3, __LINE__);
     assertTrue(notFullVectorCopy.numElements == 3, __LINE__);
     assertTrue(notFullVectorCopy.buffer != vectorToCopy.buffer, __LINE__);
     assertTrue(notFullVectorCopy.buffer[0] == 1, __LINE__);
     assertTrue(notFullVectorCopy.buffer[1] == 2, __LINE__);
     assertTrue(notFullVectorCopy.buffer[2] == 5, __LINE__);
-  std::cout << "HERE";
+    
     /*
      * Testing Raw Iterators
      */
@@ -362,85 +361,85 @@ int main(int argc, const char *argv[])
      * Testing begin and end
      */
     startTestSet("Iterator Begin and End");
-    // vector<int>::iterator emptyVectorBeginIt = emptyVector.begin();
-    // assertTrue(emptyVectorBeginIt.ptr == NULL, __LINE__);
+    vector<int>::iterator emptyVectorBeginIt = emptyVector.begin();
+    assertTrue(emptyVectorBeginIt.ptr == NULL, __LINE__);
 
-    // vector<int>::iterator emptyVectorEndIt = emptyVector.end();
-    // assertTrue(emptyVectorEndIt.ptr == NULL, __LINE__);
+    vector<int>::iterator emptyVectorEndIt = emptyVector.end();
+    assertTrue(emptyVectorEndIt.ptr == NULL, __LINE__);
 
-    // vector<int>::iterator notFullVectorBeginIt = notFullVectorCopy.begin();
-    // assertTrue(notFullVectorCopy.buffer == notFullVectorBeginIt.ptr, __LINE__);
+    vector<int>::iterator notFullVectorBeginIt = notFullVectorCopy.begin();
+    assertTrue(notFullVectorCopy.buffer == notFullVectorBeginIt.ptr, __LINE__);
 
-    // vector<int>::iterator notFullVectorEndIt = notFullVectorCopy.end();
-    // assertTrue(notFullVectorCopy.buffer + notFullVectorCopy.numElements == notFullVectorEndIt.ptr, __LINE__);
+    vector<int>::iterator notFullVectorEndIt = notFullVectorCopy.end();
+    assertTrue(notFullVectorCopy.buffer + notFullVectorCopy.numElements == notFullVectorEndIt.ptr, __LINE__);
 
-    // /*
-    //  * Testing Iterator Assignment Operator
-    //  */
-    // startTestSet("Iterator = Operator");
-    // vector<int>::iterator iteratorToAssign;
-    // iteratorToAssign.ptr = someIntPtr;
-    // vector<int>::iterator assignedToIterator;
-    // assignedToIterator = iteratorToAssign;
-    // assertTrue(assignedToIterator.ptr == someIntPtr, __LINE__);
+    /*
+     * Testing Iterator Assignment Operator
+     */
+    startTestSet("Iterator = Operator");
+    vector<int>::iterator iteratorToAssign;
+    iteratorToAssign.ptr = someIntPtr;
+    vector<int>::iterator assignedToIterator;
+    assignedToIterator = iteratorToAssign;
+    assertTrue(assignedToIterator.ptr == someIntPtr, __LINE__);
 
-    // /*
-    //  * Testing Iterator Comparison Operators
-    //  */
-    // startTestSet("Iterator Comparison Operator");
-    // assertTrue(iteratorToAssign == assignedToIterator, __LINE__);
-    // //reset
-    // int someOtherInt = 4;
-    // int *someOtherIntPtr = &someOtherInt;
-    // assignedToIterator.ptr = someOtherIntPtr;
-    // assertTrue(iteratorToAssign != assignedToIterator, __LINE__);
+    /*
+     * Testing Iterator Comparison Operators
+     */
+    startTestSet("Iterator Comparison Operator");
+    assertTrue(iteratorToAssign == assignedToIterator, __LINE__);
+    //reset
+    int someOtherInt = 4;
+    int *someOtherIntPtr = &someOtherInt;
+    assignedToIterator.ptr = someOtherIntPtr;
+    assertTrue(iteratorToAssign != assignedToIterator, __LINE__);
 
-    // /*
-    //  * Testing Dereference Operator
-    //  */
-    // startTestSet("Iterator * Operator");
-    // assertTrue(*assignedToIterator == 4, __LINE__);
+    /*
+     * Testing Dereference Operator
+     */
+    startTestSet("Iterator * Operator");
+    assertTrue(*assignedToIterator == 4, __LINE__);
 
-    // /*
-    //  * Testing iterator incrementor
-    //  */
-    // startTestSet("Iterator Pre and Post-Increment");
-    // assertTrue((nullIt++).ptr == NULL, __LINE__);
-    // assertTrue((++nullIt).ptr == NULL, __LINE__);
+    /*
+     * Testing iterator incrementor
+     */
+    startTestSet("Iterator Pre and Post-Increment");
+    assertTrue((nullIt++).ptr == NULL, __LINE__);
+    assertTrue((++nullIt).ptr == NULL, __LINE__);
 
-    // //setting to the beginning of buffer
-    // vector<int>::iterator fakeBeginIt = vector<int>::iterator();
-    // fakeBeginIt.ptr = notFullVectorCopy.buffer;
+    //setting to the beginning of buffer
+    vector<int>::iterator fakeBeginIt = vector<int>::iterator();
+    fakeBeginIt.ptr = notFullVectorCopy.buffer;
 
-    // assertTrue((fakeBeginIt++).ptr == notFullVectorCopy.buffer, __LINE__);
-    // //reset
-    // fakeBeginIt.ptr = notFullVectorCopy.buffer;
-    // assertTrue((++fakeBeginIt).ptr == notFullVectorCopy.buffer + 1, __LINE__);
+    assertTrue((fakeBeginIt++).ptr == notFullVectorCopy.buffer, __LINE__);
+    //reset
+    fakeBeginIt.ptr = notFullVectorCopy.buffer;
+    assertTrue((++fakeBeginIt).ptr == notFullVectorCopy.buffer + 1, __LINE__);
 
-    // //setting to the end of buffer
-    // startTestSet("Iterator Pre and Post-Decrement Operator");
-    // vector<int>::iterator fakeEndIt = vector<int>::iterator();
-    // fakeEndIt.ptr = notFullVectorCopy.buffer + notFullVectorCopy.numElements;
-    // assertTrue((fakeEndIt--).ptr == notFullVectorCopy.buffer + notFullVectorCopy.numElements, __LINE__);
-    // //reset
-    // fakeEndIt.ptr = notFullVectorCopy.buffer + notFullVectorCopy.numElements;
-    // assertTrue((--fakeEndIt).ptr == notFullVectorCopy.buffer + notFullVectorCopy.numElements - 1, __LINE__);
+    //setting to the end of buffer
+    startTestSet("Iterator Pre and Post-Decrement Operator");
+    vector<int>::iterator fakeEndIt = vector<int>::iterator();
+    fakeEndIt.ptr = notFullVectorCopy.buffer + notFullVectorCopy.numElements;
+    assertTrue((fakeEndIt--).ptr == notFullVectorCopy.buffer + notFullVectorCopy.numElements, __LINE__);
+    //reset
+    fakeEndIt.ptr = notFullVectorCopy.buffer + notFullVectorCopy.numElements;
+    assertTrue((--fakeEndIt).ptr == notFullVectorCopy.buffer + notFullVectorCopy.numElements - 1, __LINE__);
 
-    // /*
-    //  * Testing push_back for Non-Integer Vector Behavior (Just to Make Sure vector Works For Other Types)
-    //  */
-    // startTestSet("Can Hold Strings");
-    // vector<string> stringVector;
+    /*
+     * Testing push_back for Non-Integer Vector Behavior (Just to Make Sure vector Works For Other Types)
+     */
+    startTestSet("Can Hold Strings");
+    vector<string> stringVector;
 
-    // stringVector.push_back("Hello");
-    // stringVector.push_back("It's me");
-    // stringVector.push_back("I was wondering");
-    // assertTrue(stringVector.numCapacity == 4, __LINE__);
-    // assertTrue(stringVector.buffer[0] == "Hello", __LINE__);
-    // assertTrue(stringVector.buffer[1] == "It's me", __LINE__);
-    // assertTrue(stringVector.buffer[2] == "I was wondering", __LINE__);
+    stringVector.push_back("Hello");
+    stringVector.push_back("It's me");
+    stringVector.push_back("I was wondering");
+    assertTrue(stringVector.numCapacity == 4, __LINE__);
+    assertTrue(stringVector.buffer[0] == "Hello", __LINE__);
+    assertTrue(stringVector.buffer[1] == "It's me", __LINE__);
+    assertTrue(stringVector.buffer[2] == "I was wondering", __LINE__);
 
-    // generateTestingReport();
+    generateTestingReport();
 
     return 0;
 }
