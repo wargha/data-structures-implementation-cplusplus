@@ -192,14 +192,9 @@ deque<T> &deque<T>::operator=(const deque<T> &rhs)
 
     iFront = 0;
     iBack = numCapacity - 1;
-
     int f = rhs.iFront;
-    int cap = rhs.numCapacity;
-
-    for (int i = 0; i < numCapacity; i++) { 
-        int z = (f % cap + cap) % cap;
-        buffer[i] = rhs.buffer[z];
-        f++;
+    for (int i = 0; i < numCapacity; i++, f++) { 
+        buffer[i] = rhs.buffer[rhs.iNormalize(f)];
     }
 
     return *this;
