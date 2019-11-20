@@ -48,7 +48,7 @@ void assertTrue(bool passed, int aLineNumber)
     if (!passed)
     {
         if(passedFlag){
-            std::cout << std::endl;
+            std::cout<<std::endl;
         }
         passedFlag = false;
         std::cout<<"\tfailed on line "<<aLineNumber<<std::endl;

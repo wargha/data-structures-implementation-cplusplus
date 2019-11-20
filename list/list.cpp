@@ -181,8 +181,8 @@ void list<T>::insertAt(node *pCurrent, const T &element, bool after)
         {
             pNew->pNext->pPrev = pNew;
         }
-        numElements++;
     }
+   numElements++;
 }
 
 template <class T>
